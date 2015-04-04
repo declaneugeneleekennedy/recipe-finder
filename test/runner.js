@@ -7,7 +7,7 @@ var tests = [
     //'/model/fridge',
     '/model/ingredient',
     //'/model/recipe',
-    //'/model/unit'
+    '/model/unit'
 ];
 
 tests.forEach(function(test) {
