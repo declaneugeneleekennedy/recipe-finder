@@ -5,8 +5,8 @@ exports.testUnit = function(test) {
 
     u.add('grams');
 
-    test.ok(u.checkUnit('grams'), 'grams should be a valid unit');
-    test.equal(u.checkUnit('ounces'), false, 'ounces should be an invalid unit');
+    test.ok(u.check('grams'), 'grams should be a valid unit');
+    test.equal(u.check('ounces'), false, 'ounces should be an invalid unit');
 
     test.done();
 };

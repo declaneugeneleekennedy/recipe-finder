@@ -4,7 +4,7 @@ var reporter = require('nodeunit').reporters.default;
 // Tests
 
 var tests = [
-    //'/model/fridge',
+    '/model/fridge',
     '/model/ingredient',
     //'/model/recipe',
     '/model/unit'
