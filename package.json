@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/jimjambongs/recipe-finder",
   "dependencies": {
+    "fast-csv": "^0.6.0",
+    "moment": "^2.9.0",
     "nodeunit": "^0.9.1",
     "q": "^1.2.0",
     "stdio": "^0.2.7"

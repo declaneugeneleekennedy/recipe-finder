@@ -4,7 +4,7 @@ var Importer    = require(__dirname + '/../lib/importer');
 module.exports.testConstructor = function(test) {
     test.expect(2);
 
-    var p1 = {getModel: function() {}};
+    var p1 = {getModel: function() { return q(); }};
     var p2 = {};
 
     test.doesNotThrow(function() {
@@ -24,7 +24,7 @@ module.exports.testImport = function(test) {
     var f1 = __filename;
     var f2 = '/path/to/file';
 
-    var p = { getModel: function() {} };
+    var p = { getModel: function() { return q(); } };
 
     var i1 = new Importer(f1, p);
     var i2 = new Importer(f2, p);

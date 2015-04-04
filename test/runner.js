@@ -8,7 +8,8 @@ var tests = [
     '/model/ingredient',
     '/model/recipe',
     '/model/unit',
-    '/importer'
+    '/importer',
+    '/parser/fridge'
 ];
 
 tests.forEach(function(test, i) {
