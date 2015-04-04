@@ -12,17 +12,26 @@ module.exports.testConstructor = function(test) {
 };
 
 module.exports.testAdderAndGetter = function(test) {
-    test.expect(2);
+    test.expect(5);
 
     var f = new Fridge();
 
-    var c = new Ingredient('cheese', 10, 'slices', '12/06/2015');
+    var o = {
+        name: 'cheese',
+        amount: 10,
+        unit: 'slices',
+        useBy: '12/06/2015'
+    };
 
-    f.add(c);
+    f.add(o);
 
-    test.equal(f.get('cheese'), c, 'Ingredient.get(cheese) should contain the cheese incredient');
+    test.equal(f.get('cheese').name, 'cheese', 'Fridge.get(cheese).name should be cheese');
+    test.equal(f.get('cheese').amount, 10, 'Fridge.get(cheese).amount should be 10');
+    test.equal(f.get('cheese').unit, 'slices', 'Fridge.get(cheese).unit should be slices');
+    test.equal(f.get('cheese').useBy.format('DDMMYYYY'), '12062015', 'Fridge.get(cheese).useBy should be 12062015');
+
     test.throws(function() {
-        f.add(c);
+        f.add(o);
     },
     'Duplicate item added to Fridge',
     'Fridge should not allow duplicate items');
