@@ -6,10 +6,12 @@ var reporter = require('nodeunit').reporters.default;
 var tests = [
     '/model/fridge',
     '/model/ingredient',
-    //'/model/recipe',
+    '/model/recipe',
     '/model/unit'
 ];
 
-tests.forEach(function(test) {
-    reporter.run([ __dirname + test + '.js' ]);
+tests.forEach(function(test, i) {
+    tests[i] = __dirname + test + '.js';
 });
+
+reporter.run(tests);
