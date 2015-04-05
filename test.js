@@ -8,12 +8,14 @@ var tests = [
     '/model/ingredient',
     '/model/recipe',
     '/model/unit',
+    '/model/recipe-collection',
     '/importer',
-    '/parser/fridge'
+    '/parser/fridge',
+    '/parser/recipe'
 ];
 
 tests.forEach(function(test, i) {
-    tests[i] = __dirname + test + '.js';
+    tests[i] = __dirname + '/test' + test + '.js';
 });
 
 reporter.run(tests);
