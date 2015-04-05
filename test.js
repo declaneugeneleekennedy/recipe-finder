@@ -11,7 +11,8 @@ var tests = [
     '/model/recipe-collection',
     '/importer',
     '/parser/fridge',
-    '/parser/recipe'
+    '/parser/recipe',
+    '/recipe-finder'
 ];
 
 tests.forEach(function(test, i) {

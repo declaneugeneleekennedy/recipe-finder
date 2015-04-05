@@ -1,5 +1,8 @@
 var parser = require(__dirname + '/../../lib/parser/fridge');
 
+/**
+ * Tests that the parser correctly handles properly formatted CSV data
+ */
 module.exports.testWellFormed = function(test) {
     test.expect(2);
 

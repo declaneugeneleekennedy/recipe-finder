@@ -1,18 +1,30 @@
 var Fridge      = require(__dirname + '/../../lib/model/fridge');
 var Ingredient  = require(__dirname + '/../../lib/model/ingredient');
+var m           = require('moment');
 
+/**
+ * Tests that the constructor does not throw exceptions when given valid input
+ */
 module.exports.testConstructor = function(test) {
     test.expect(1);
 
     test.doesNotThrow(function() {
-        new Fridge([new Ingredient('cheese', 10, 'slices', '12/06/2015')]);
+        new Fridge([{
+                name: 'cheese',
+                amount: 10,
+                unit: 'slices',
+                useBy: '12/06/2015'
+            }]);
     });
 
     test.done();
 };
 
+/**
+ * Tests that the add, get and getAll methods are operating as intended
+ */
 module.exports.testAdderAndGetter = function(test) {
-    test.expect(5);
+    test.expect(6);
 
     var f = new Fridge();
 
@@ -30,6 +42,8 @@ module.exports.testAdderAndGetter = function(test) {
     test.equal(f.get('cheese').unit, 'slices', 'Fridge.get(cheese).unit should be slices');
     test.equal(f.get('cheese').useBy.format('DDMMYYYY'), '12062015', 'Fridge.get(cheese).useBy should be 12062015');
 
+    test.equal(Object.keys(f.getAll()).length, 1, 'Fridge.getAll() should return 1 item');
+
     test.throws(function() {
         f.add(o);
     },
@@ -39,24 +53,34 @@ module.exports.testAdderAndGetter = function(test) {
     test.done();
 };
 
+/**
+ * Tests that the check method for validating ingredients is operating correctly
+ */
 module.exports.testChecker = function(test) {
     test.expect(4);
 
-    var future = new Date();
-    future.setDate(future.getDate() + 1);
+    var future = m();
+    future.set('date', future.get('date') + 1);
 
-    var past = new Date();
-    past.setDate(past.getDate() - 1);
+    var past = m();
+    past.set('date', past.get('date') - 1);
 
-    var format = function(date) {
-        return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
-    };
-
-    var f = new Fridge([
-        new Ingredient('cheese', 10, 'slices', format(future)),
-        new Ingredient('ham', 200, 'grams', format(future)),
-        new Ingredient('broccoli', 500, 'grams', format(past))
-    ]);
+    var f = new Fridge([{
+        name: 'cheese',
+        amount: 10,
+        unit: 'slices',
+        useBy: future.format('DD/MM/YYYY')
+    }, {
+        name: 'ham',
+        amount: 200,
+        unit: 'grams',
+        useBy: future.format('DD/MM/YYYY')
+    }, {
+        name: 'broccoli',
+        amount: 500,
+        unit: 'grams',
+        useBy: past.format('DD/MM/YYYY')
+    }]);
 
     test.ok(f.check('cheese', 8, 'slices'), 'Item cheese should be usable');
     test.equal(f.check('ham', 300, 'grams'), false, 'Item ham should not be usable (not enough)');

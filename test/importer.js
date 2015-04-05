@@ -1,6 +1,10 @@
 var q           = require('q');
 var Importer    = require(__dirname + '/../lib/importer');
 
+/**
+ * Tests that the constructor does not throw when a compatible parser is given,
+ * and does throw when an incompatible one is provided
+ */
 module.exports.testConstructor = function(test) {
     test.expect(2);
 
@@ -18,6 +22,10 @@ module.exports.testConstructor = function(test) {
     test.done();
 };
 
+/**
+ * Tests that the importer will succeed when an accessible file is given, and
+ * fail when the file can not be found
+ */
 module.exports.testImport = function(test) {
     test.expect(2);
 

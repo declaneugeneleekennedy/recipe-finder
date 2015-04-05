@@ -1,15 +1,19 @@
 var Recipe      = require(__dirname + '/../../lib/model/recipe');
 var Ingredient  = require(__dirname + '/../../lib/model/ingredient');
 
+/**
+ * Tests that ingredients provided to the constructor are correctly set and can
+ * be returned using getIngredient()
+ */
 module.exports.testConstructor = function(test) {
     test.expect(4);
 
     var r = new Recipe('cheese on toast', [{
-        name:   'cheese',
+        item:   'cheese',
         amount: 2,
         unit:   'slices'
     }, {
-        name:   'bread',
+        item:   'bread',
         amount: 200,
         unit:   'grams'
     }]);
