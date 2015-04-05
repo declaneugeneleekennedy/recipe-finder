@@ -13,7 +13,7 @@
 1.  Open the project folder in a terminal
 2.  run:
 
-    `node index`
+    `node index --fridge=/path/to/fridge.csv --recipes=/path/to/recipes.json`
 
 ## Running Tests
 1.  Open the project folder in a terminal
