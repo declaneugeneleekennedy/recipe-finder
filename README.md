@@ -6,10 +6,17 @@
 ## Install
 1.  Open the project folder in a terminal
 2.  run:
+
     `npm install`
 
 ## Running the App
-`node index`
+1.  Open the project folder in a terminal
+2.  run:
+
+    `node index`
 
 ## Running Tests
-`node test`
+1.  Open the project folder in a terminal
+2.  run:
+
+    `node test`
